@@ -3,11 +3,22 @@
 
 
 var ball={
-	rotationY:0
+	rotationY:0,
+	rotationX:0,
+	rotationZ:0,
+	positionX:0,
+	positionY:0,
+	positionZ:0
 };
 
 var gui =  new dat.GUI();
     gui.add(ball, 'rotationY',-0.2, 0.2, 0.001);﻿ 
+    gui.add(ball, 'rotationX',-0.2, 0.2, 0.001);﻿ 
+    gui.add(ball, 'rotationZ',-0.2, 0.2, 0.001);﻿ 
+    gui.add(ball, 'positionX',-5, 5, 0.1);﻿ 
+    gui.add(ball, 'positionY',-5, 5, 0.1);﻿ 
+    gui.add(ball, 'positionZ',-5, 5, 0.1);﻿ 
+
 
 
 
@@ -50,7 +61,16 @@ animate();
 function animate() {
 	requestAnimationFrame( animate );
 	// mesh.rotation.x += 0.01;
+	mesh.rotation.x += ball.rotationX;
 	mesh.rotation.y += ball.rotationY;
+	mesh.rotation.z += ball.rotationZ;
+
+	mesh.position.x += ball.positionX;
+	mesh.position.y += ball.positionY;
+	mesh.position.z += ball.positionZ;
+
+
+
 	renderer.render( scene, camera );
 }
 
